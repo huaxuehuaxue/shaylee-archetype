@@ -1,0 +1,31 @@
+spring:
+  application:
+    name: shaylee-gateway
+  cloud:
+    # 注册中心
+    nacos:
+      config:
+        server-addr: 119.23.184.173:8848
+        file-extension: yml
+      discovery:
+        server-addr: 119.23.184.173:8848
+    # 限流熔断
+    sentinel:
+      transport:
+        dashboard: 119.23.184.173:8849
+      scg:
+        fallback:
+          mode: response
+          response-status: 426
+          response-body: error request
+    # 网关
+    gateway:
+      routes:
+        - id: shaylee-api-oss
+          uri: lb://shaylee-api-oss
+          predicates:
+            - Path=/api/oss/**
+        - id: shaylee-api
+          uri: lb://shaylee-api
+          predicates:
+            - Path=/api/**
