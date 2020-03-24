@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//com.shaylee.common.mybatis.org//DTD Mapper 3.0//EN" "http://com.shaylee.common.mybatis.org/dtd/com.shaylee.common.mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.shaylee.gateway.dao.SysRouteConfDao">
 
     <resultMap type="com.shaylee.business.gateway.manager.entity.SysRouteConfEntity" id="SysRouteConfMap">
