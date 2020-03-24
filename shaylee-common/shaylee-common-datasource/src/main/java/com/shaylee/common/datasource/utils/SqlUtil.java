@@ -1,4 +1,4 @@
-package com.shaylee.common.mybatis.utils;
+package com.shaylee.common.datasource.utils;
 
 import org.apache.commons.lang3.StringUtils;
 

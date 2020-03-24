@@ -14,4 +14,13 @@
     <modules>
         <module>shaylee-business-gateway</module>
     </modules>
+
+    <dependencies>
+        <!-- datasource -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-datasource</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
+    </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.shaylee.common.mybatis.base;
+package com.shaylee.common.datasource.base;
 
 import tk.mybatis.mapper.common.ConditionMapper;
 import tk.mybatis.mapper.common.IdsMapper;

@@ -1,4 +1,4 @@
-package com.shaylee.common.mybatis.utils;
+package com.shaylee.common.datasource.utils;
 
 import tk.mybatis.mapper.genid.GenId;
 

@@ -1,4 +1,4 @@
-package com.shaylee.common.core.base;
+package com.shaylee.common.core.base.controller;
 
 /*
 import com.github.pagehelper.Page;

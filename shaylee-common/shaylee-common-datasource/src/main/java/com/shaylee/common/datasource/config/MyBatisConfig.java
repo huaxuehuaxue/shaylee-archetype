@@ -1,6 +1,6 @@
-package com.shaylee.common.mybatis.config;
+package com.shaylee.common.datasource.config;
 
-import com.shaylee.common.mybatis.annotation.MybatisMapper;
+import com.shaylee.common.datasource.annotation.MybatisMapper;
 import org.springframework.context.annotation.Configuration;
 import tk.mybatis.spring.annotation.MapperScan;
 

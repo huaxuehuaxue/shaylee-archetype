@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//com.shaylee.common.mybatis.org//DTD Mapper 3.0//EN" "http://com.shaylee.common.mybatis.org/dtd/com.shaylee.common.mybatis-3-mapper.dtd">
 <mapper namespace="com.shaylee.gateway.dao.SysRouteConfDao">
 
-    <resultMap type="com.shaylee.business.gateway.manager.entity.SysRouteConf" id="SysRouteConfMap">
+    <resultMap type="com.shaylee.business.gateway.manager.entity.SysRouteConfEntity" id="SysRouteConfMap">
         <result property="id" column="id"/>
         <result property="routeName" column="route_name"/>
         <result property="routeId" column="route_id"/>

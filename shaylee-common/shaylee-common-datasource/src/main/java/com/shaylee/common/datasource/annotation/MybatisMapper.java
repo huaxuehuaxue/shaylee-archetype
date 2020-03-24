@@ -1,4 +1,4 @@
-package com.shaylee.common.mybatis.annotation;
+package com.shaylee.common.datasource.annotation;
 
 import org.springframework.stereotype.Component;
 
