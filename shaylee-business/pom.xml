@@ -9,8 +9,9 @@
     </parent>
     <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>shaylee-business</artifactId>
 
-
+    <modules>
+        <module>shaylee-business-gateway</module>
+    </modules>
 </project>

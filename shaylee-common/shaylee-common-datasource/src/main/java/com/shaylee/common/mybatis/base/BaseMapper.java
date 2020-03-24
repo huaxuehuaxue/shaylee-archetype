@@ -1,4 +1,4 @@
-package com.shaylee.common.core.base;
+package com.shaylee.common.mybatis.base;
 
 import tk.mybatis.mapper.common.ConditionMapper;
 import tk.mybatis.mapper.common.IdsMapper;
@@ -12,5 +12,5 @@ import tk.mybatis.mapper.common.special.InsertListMapper;
  * @author Adrian
  * @date 2020-02-26
  */
-public interface BaseMybatisMapper<T> extends Mapper<T>, IdsMapper<T>, InsertListMapper<T>, ConditionMapper<T> {
+public interface BaseMapper<T> extends Mapper<T>, IdsMapper<T>, InsertListMapper<T>, ConditionMapper<T> {
 }

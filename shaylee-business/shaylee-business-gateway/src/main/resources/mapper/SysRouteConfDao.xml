@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//com.shaylee.common.mybatis.org//DTD Mapper 3.0//EN" "http://com.shaylee.common.mybatis.org/dtd/com.shaylee.common.mybatis-3-mapper.dtd">
+<mapper namespace="com.shaylee.gateway.dao.SysRouteConfDao">
+
+    <resultMap type="com.shaylee.business.gateway.manager.entity.SysRouteConf" id="SysRouteConfMap">
+        <result property="id" column="id"/>
+        <result property="routeName" column="route_name"/>
+        <result property="routeId" column="route_id"/>
+        <result property="predicates" column="predicates"/>
+        <result property="filters" column="filters"/>
+        <result property="uri" column="uri"/>
+        <result property="sort" column="sort"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="delFlag" column="del_flag"/>
+    </resultMap>
+
+</mapper>

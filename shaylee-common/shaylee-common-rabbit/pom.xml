@@ -3,19 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shaylee-archetype</artifactId>
+        <artifactId>shaylee-common</artifactId>
         <groupId>com.shaylee</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>shaylee-common</artifactId>
-    <packaging>pom</packaging>
 
-    <modules>
-        <module>shaylee-common-core</module>
-        <module>shaylee-common-redis</module>
-        <module>shaylee-common-gateway</module>
-        <module>shaylee-common-rabbit</module>
-        <module>shaylee-common-datasource</module>
-    </modules>
+    <artifactId>shaylee-common-rabbit</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+    </dependencies>
 </project>

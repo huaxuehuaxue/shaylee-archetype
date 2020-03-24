@@ -3,13 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shaylee-archetype</artifactId>
+        <artifactId>shaylee-service</artifactId>
         <groupId>com.shaylee</groupId>
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>shaylee-gateway</artifactId>
+    <artifactId>shaylee-mq-consumer</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
         <!-- gateway 网关依赖,内置webflux依赖 -->
@@ -37,32 +37,35 @@
             <groupId>com.alibaba.cloud</groupId>
             <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
         </dependency>
+
+        <!-- web模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
         <!-- undertow容器 -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
         </dependency>
-
-        <!-- gateway支持包 -->
-        <dependency>
-            <groupId>com.shaylee</groupId>
-            <artifactId>shaylee-common-gateway</artifactId>
-            <version>${shaylee.version}</version>
-        </dependency>
-
-        <!-- 数据源 -->
+        <!-- datasource -->
         <dependency>
             <groupId>com.shaylee</groupId>
             <artifactId>shaylee-common-datasource</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
-
-        <!-- spring-boot-devtools -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-devtools</artifactId>-->
-<!--            <optional>true</optional> &lt;!&ndash; 表示依赖不会传递 &ndash;&gt;-->
-<!--        </dependency>-->
+        <!-- rabbit -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-rabbit</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <!-- redis -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-redis</artifactId>
+            <version>1.0.0</version>
+        </dependency>
     </dependencies>
 
     <build>

@@ -8,10 +8,26 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-
     <artifactId>shaylee-api</artifactId>
+    <packaging>jar</packaging>
 
     <dependencies>
+        <!-- web模块 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+        <!-- undertow容器 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-undertow</artifactId>
+        </dependency>
+        <!-- datasource -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-datasource</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
         <!-- spring-boot-devtools -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->
