@@ -57,6 +57,13 @@
             <version>${shaylee.version}</version>
         </dependency>
 
+        <!-- gateway业务包 -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-business-gateway</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
+
         <!-- spring-boot-devtools -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->

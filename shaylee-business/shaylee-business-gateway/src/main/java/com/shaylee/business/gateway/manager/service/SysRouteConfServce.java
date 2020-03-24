@@ -35,6 +35,13 @@ public interface SysRouteConfServce {
     void insert(SysRouteConfEntity sysRouteConfEntity);
 
     /**
+     * 批量新增数据
+     *
+     * @param sysRouteConfEntityList 实例对象列表
+     */
+    void batchInsert(List<SysRouteConfEntity> sysRouteConfEntityList);
+
+    /**
      * 修改数据
      *
      * @param sysRouteConfEntity 实例对象
@@ -42,10 +49,16 @@ public interface SysRouteConfServce {
     void update(SysRouteConfEntity sysRouteConfEntity);
 
     /**
-     * 通过主键删除数据
+     * 通过主键逻辑删除数据
      *
      * @param id 主键
-     * @return 是否成功
      */
-    Boolean deleteById(Long id);
+    void deleteById(Long id);
+
+    /**
+     * 通过routeId逻辑删除数据
+     *
+     * @param routeId 路由ID
+     */
+    void deleteByRouteId(String routeId);
 }

@@ -12,6 +12,4 @@ public interface CacheConstants {
 	 * 路由存放
 	 */
 	String ROUTE_KEY = "gateway_route_key";
-
-	String ROUTE_LIST_KEY = "gateway_route_keys";
 }

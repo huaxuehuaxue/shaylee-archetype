@@ -41,15 +41,43 @@ public class SysRouteConfServceImpl implements SysRouteConfServce {
     }
 
     @Override
+    public void batchInsert(List<SysRouteConfEntity> sysRouteConfEntityList) {
+        // TODO 优化
+        for (SysRouteConfEntity sysRouteConfEntity : sysRouteConfEntityList) {
+            sysRouteConfDao.insertSelective(sysRouteConfEntity);
+        }
+    }
+
+    @Override
     public void update(SysRouteConfEntity sysRouteConfEntity) {
         sysRouteConfDao.updateByPrimaryKeySelective(sysRouteConfEntity);
     }
 
     @Override
-    public Boolean deleteById(Long id) {
+    public void deleteById(Long id) {
         SysRouteConfEntity sysRouteConfEntity = new SysRouteConfEntity();
         sysRouteConfEntity.setId(id);
         sysRouteConfEntity.setDelFlag(BaseConstant.DEL_FLAG_NORMAL);
-        return sysRouteConfDao.deleteByPrimaryKey(sysRouteConfEntity) > 0;
+        sysRouteConfEntity = sysRouteConfDao.selectOne(sysRouteConfEntity);
+        if (sysRouteConfEntity != null) {
+            SysRouteConfEntity temp = new SysRouteConfEntity();
+            temp.setId(sysRouteConfEntity.getId());
+            temp.setDelFlag(BaseConstant.DEL_FLAG_DELETE);
+            sysRouteConfDao.updateByPrimaryKeySelective(temp);
+        }
+    }
+
+    @Override
+    public void deleteByRouteId(String routeId) {
+        SysRouteConfEntity sysRouteConfEntity = new SysRouteConfEntity();
+        sysRouteConfEntity.setRouteId(routeId);
+        sysRouteConfEntity.setDelFlag(BaseConstant.DEL_FLAG_NORMAL);
+        sysRouteConfEntity = sysRouteConfDao.selectOne(sysRouteConfEntity);
+        if (sysRouteConfEntity != null) {
+            SysRouteConfEntity temp = new SysRouteConfEntity();
+            temp.setId(sysRouteConfEntity.getId());
+            temp.setDelFlag(BaseConstant.DEL_FLAG_DELETE);
+            sysRouteConfDao.updateByPrimaryKeySelective(temp);
+        }
     }
 }

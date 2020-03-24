@@ -1,14 +1,18 @@
-package com.shaylee.common.gateway.common;
+package com.shaylee.gateway.support;
 
+import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
+import com.shaylee.business.gateway.manager.service.SysRouteConfServce;
 import com.shaylee.common.gateway.constant.CacheConstants;
-import com.shaylee.common.gateway.support.RouteCacheHolder;
+import com.shaylee.common.gateway.utils.RouteCacheHolder;
 import com.shaylee.common.redis.service.CacheService;
+import com.shaylee.business.gateway.factory.SysRouteConfFactory;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
 import org.springframework.cloud.gateway.route.RouteDefinitionRepository;
+import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -23,17 +27,21 @@ import java.util.stream.Collectors;
  * @author Adrian
  * @date 2020-03-22
  */
-//@Component
+@Component
 public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	private static Logger logger = LoggerFactory.getLogger(RedisRouteDefinitionWriter.class);
 	@Autowired
 	private CacheService cacheService;
+	@Autowired
+	private SysRouteConfServce sysRouteConfServce;
 
 	@Override
 	public Mono<Void> save(Mono<RouteDefinition> route) {
 		return route.flatMap(r -> {
 			logger.info("保存路由信息{}", r);
-			cacheService.hSet(CacheConstants.ROUTE_KEY, r.getId(), r);
+			SysRouteConfEntity sysRouteConfEntity = SysRouteConfFactory.buildSysRouteConfEntity(r);
+			sysRouteConfServce.insert(sysRouteConfEntity);
+			//cacheService.hSet(CacheConstants.ROUTE_KEY, r.getId(), r);
 			RouteCacheHolder.removeRouteList();
 			return Mono.empty();
 		});
@@ -43,7 +51,8 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	public Mono<Void> delete(Mono<String> routeId) {
 		routeId.subscribe(id -> {
 			logger.info("删除路由信息{}", id);
-			cacheService.hDel(CacheConstants.ROUTE_KEY, id);
+			sysRouteConfServce.deleteByRouteId(id);
+			//cacheService.hDel(CacheConstants.ROUTE_KEY, id);
 		});
 		RouteCacheHolder.removeRouteList();
 		return Mono.empty();

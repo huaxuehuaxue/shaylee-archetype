@@ -45,8 +45,8 @@ spring:
   rabbitmq:
     host: 127.0.0.1
     port: 5672
-    username: app
-    password: app
+    username: root
+    password: root
     virtual-host: shaylee
     cache:
       connection:

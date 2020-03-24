@@ -11,5 +11,10 @@
 
     <artifactId>shaylee-business-gateway</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-gateway-core</artifactId>
+        </dependency>
+    </dependencies>
 </project>
