@@ -30,7 +30,7 @@ public class SysRouteConfFactory {
         try {
             sysRouteConfEntity.setFilters(objectMapper.writeValueAsString(routeDefinition.getFilters()));
             sysRouteConfEntity.setPredicates(objectMapper.writeValueAsString(routeDefinition.getPredicates()));
-            sysRouteConfEntity.setUri(objectMapper.writeValueAsString(routeDefinition.getUri()));
+            sysRouteConfEntity.setUri(routeDefinition.getUri().toString());
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }

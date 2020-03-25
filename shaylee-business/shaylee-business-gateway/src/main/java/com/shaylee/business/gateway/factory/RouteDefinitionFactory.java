@@ -1,5 +1,6 @@
 package com.shaylee.business.gateway.factory;
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
 import org.springframework.cloud.gateway.handler.predicate.PredicateDefinition;
@@ -54,14 +55,12 @@ public class RouteDefinitionFactory {
         // 设置URI
         routeDefinition.setUri(URI.create(uri));
         // 设置Predicates [{"args": {"_genkey_0": "/api/oss/**"}, "name": "Path"}]
-        List<PredicateDefinition> predicateDefinitionList = new ArrayList<>();
-        /*PredicateDefinition predicateDefinition = new PredicateDefinition();
-        predicateDefinition.setName("Path");
-        Map<String, String> args = new HashMap<>(1);
-        args.put("_genkey_0", path);
-        predicateDefinition.setArgs(args);
-        predicateDefinitionList.add(predicateDefinition);
-        routeDefinition.setPredicates(predicateDefinitionList);*/
+        try {
+            List<PredicateDefinition> predicateDefinitionList = objectMapper.readValue(predicates, new TypeReference<List<PredicateDefinition>>(){});
+            routeDefinition.setPredicates(predicateDefinitionList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return routeDefinition;
     }
 
@@ -72,7 +71,9 @@ public class RouteDefinitionFactory {
     }
 
     public static RouteDefinition buildRouteDefinition(SysRouteConfEntity sysRouteConfEntity) {
-        RouteDefinitionFactory.buildRouteDefinition(sysRouteConfEntity.getRouteId(), sysRouteConfEntity.getUri(), sysRouteConfEntity.getPredicates(), sysRouteConfEntity.getFilters());
-        return null;
+        return RouteDefinitionFactory.buildRouteDefinition(sysRouteConfEntity.getRouteId(),
+                sysRouteConfEntity.getUri(),
+                sysRouteConfEntity.getPredicates(),
+                sysRouteConfEntity.getFilters());
     }
 }
