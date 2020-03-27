@@ -3,9 +3,7 @@ package com.shaylee.gateway.support;
 import com.shaylee.business.gateway.factory.RouteDefinitionFactory;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
 import com.shaylee.business.gateway.manager.service.SysRouteConfServce;
-import com.shaylee.common.gateway.constant.CacheConstants;
 import com.shaylee.common.gateway.utils.RouteCacheHolder;
-import com.shaylee.common.redis.service.CacheService;
 import com.shaylee.business.gateway.factory.SysRouteConfFactory;
 import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
@@ -18,8 +16,6 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * Title: redis 保存路由信息，优先级比配置文件高
@@ -32,8 +28,6 @@ import java.util.stream.Collectors;
 public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	private static Logger logger = LoggerFactory.getLogger(RedisRouteDefinitionWriter.class);
 	@Autowired
-	private CacheService cacheService;
-	@Autowired
 	private SysRouteConfServce sysRouteConfServce;
 
 	@Override
@@ -42,7 +36,6 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			logger.info("保存路由信息{}", r);
 			SysRouteConfEntity sysRouteConfEntity = SysRouteConfFactory.buildSysRouteConfEntity(r);
 			sysRouteConfServce.insert(sysRouteConfEntity);
-			//cacheService.hSet(CacheConstants.ROUTE_KEY, r.getId(), r);
 			RouteCacheHolder.removeRouteList();
 			return Mono.empty();
 		});
@@ -53,7 +46,6 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 		routeId.subscribe(id -> {
 			logger.info("删除路由信息{}", id);
 			sysRouteConfServce.deleteByRouteId(id);
-			//cacheService.hDel(CacheConstants.ROUTE_KEY, id);
 		});
 		RouteCacheHolder.removeRouteList();
 		return Mono.empty();
@@ -78,13 +70,6 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 
 		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfServce.queryAll();
 		List<RouteDefinition> values = RouteDefinitionFactory.buildRouteDefinition(routeConfEntityList);
-
-		/*Map<String, Object> map = cacheService.hGetAll(CacheConstants.ROUTE_KEY);
-		List<RouteDefinition> values = map.values().stream()
-				.map(entity -> (RouteDefinition)entity)
-				.collect(Collectors.toList());
-
-		logger.debug("redis 中路由定义条数： {}， {}", values.size(), values);*/
 
 		RouteCacheHolder.setRouteList(values);
 		return Flux.fromIterable(values);
