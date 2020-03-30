@@ -15,7 +15,9 @@ import org.springframework.stereotype.Component;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Title: redis 保存路由信息，优先级比配置文件高
@@ -68,7 +70,9 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			return Flux.fromIterable(routeList);
 		}*/
 
-		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfServce.queryAll();
+		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfServce.queryAll().stream()
+				.sorted(Comparator.comparing(SysRouteConfEntity::getSort))
+				.collect(Collectors.toList());
 		List<RouteDefinition> values = RouteDefinitionFactory.buildRouteDefinition(routeConfEntityList);
 		logger.debug("数据库 中路由定义条数: {}, {}", values.size(), values);
 
