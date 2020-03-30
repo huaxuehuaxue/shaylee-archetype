@@ -36,7 +36,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			logger.info("保存路由信息{}", r);
 			SysRouteConfEntity sysRouteConfEntity = SysRouteConfFactory.buildSysRouteConfEntity(r);
 			sysRouteConfServce.insert(sysRouteConfEntity);
-			RouteCacheHolder.removeRouteList();
+			/*RouteCacheHolder.removeRouteList();*/
 			return Mono.empty();
 		});
 	}
@@ -47,7 +47,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			logger.info("删除路由信息{}", id);
 			sysRouteConfServce.deleteByRouteId(id);
 		});
-		RouteCacheHolder.removeRouteList();
+		/*RouteCacheHolder.removeRouteList();*/
 		return Mono.empty();
 	}
 
@@ -62,16 +62,17 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	 */
 	@Override
 	public Flux<RouteDefinition> getRouteDefinitions() {
-		List<RouteDefinition> routeList = RouteCacheHolder.getRouteList();
+		/*List<RouteDefinition> routeList = RouteCacheHolder.getRouteList();
 		if (CollectionUtils.isNotEmpty(routeList)) {
 			logger.debug("内存 中路由定义条数： {}， {}", routeList.size(), routeList);
 			return Flux.fromIterable(routeList);
-		}
+		}*/
 
 		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfServce.queryAll();
 		List<RouteDefinition> values = RouteDefinitionFactory.buildRouteDefinition(routeConfEntityList);
+		logger.debug("数据库 中路由定义条数: {}, {}", values.size(), values);
 
-		RouteCacheHolder.setRouteList(values);
+		/*RouteCacheHolder.setRouteList(values);*/
 		return Flux.fromIterable(values);
 	}
 }
