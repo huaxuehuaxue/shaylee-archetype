@@ -44,6 +44,12 @@
             <artifactId>shaylee-common-datasource</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
+        <!-- datasource -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-rabbit</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
         <!-- gateway业务包 -->
         <dependency>
             <groupId>com.shaylee</groupId>

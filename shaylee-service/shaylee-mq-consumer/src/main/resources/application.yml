@@ -1,6 +1,6 @@
 server:
   # 服务端口
-  port: 19090
+  port: 19091
   undertow:
     url-charset: UTF-8
     io-threads: 16
