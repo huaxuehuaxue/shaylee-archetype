@@ -8,12 +8,12 @@ server:
     buffer-size: 1024
     direct-buffers: true
 
-logging:
-  level:
-    com.shaylee: debug
-    org.springframework: warn
-    com.alibaba.nacos.client.naming: error
-    org.springframework.cloud.gateway: debug
+#logging:
+#  level:
+#    com.shaylee: debug
+#    org.springframework: warn
+#    com.alibaba.nacos.client.naming: error
+#    org.springframework.cloud.gateway: debug
 
 spring:
   profiles:

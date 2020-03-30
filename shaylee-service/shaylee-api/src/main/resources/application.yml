@@ -10,12 +10,12 @@ server:
   servlet:
     context-path: "/api"
 
-logging:
-  level:
-    com.shaylee: debug
-    org.springframework: warn
-    com.alibaba.nacos.client.naming: error
-    org.springframework.cloud.gateway: debug
+#logging:
+#  level:
+#    com.shaylee: debug
+#    org.springframework: warn
+#    com.alibaba.nacos.client.naming: error
+#    org.springframework.cloud.gateway: debug
 
 spring:
   profiles:
