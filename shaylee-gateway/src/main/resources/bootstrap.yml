@@ -1,3 +1,20 @@
+server:
+  # 服务端口
+  port: 8080
+  undertow:
+    io-threads: 16
+    worker-threads: 100
+    buffer-size: 1024
+    direct-buffers: true
+
+# 日志配置
+logging:
+  level:
+    com.shaylee: debug
+    org.springframework: warn
+    com.alibaba.nacos.client.naming: error
+    org.springframework.cloud.gateway: debug
+
 spring:
   application:
     name: shaylee-gateway
@@ -19,13 +36,47 @@ spring:
           response-status: 426
           response-body: error request
     # 网关
-    gateway:
-      routes:
-        - id: shaylee-api-oss
-          uri: lb://shaylee-api-oss
-          predicates:
-            - Path=/api/oss/**
-        - id: shaylee-api
-          uri: lb://shaylee-api
-          predicates:
-            - Path=/api/**
+#    gateway:
+#      routes:
+#        - id: shaylee-api-oss
+#          uri: lb://shaylee-api-oss
+#          predicates:
+#            - Path=/api/oss/**
+#        - id: shaylee-api
+#          uri: lb://shaylee-api
+#          predicates:
+#            - Path=/api/**
+  profiles:
+    active: dev
+  boot:
+    admin:
+      client:
+        url: http://localhost:18100
+
+# mybatis原生配置
+mybatis:
+  # 搜索指定包别名
+  typeAliasesPackage: com.shaylee.**.mapper
+  # 配置mapper的扫描，找到所有的mapper.xml映射文件
+  mapperLocations: classpath*:/mapper/**/*.xml
+
+# mybatis增强配置
+mapper:
+  not-empty: true
+  identity: MYSQL
+
+# PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
