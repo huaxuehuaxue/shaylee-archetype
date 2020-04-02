@@ -4,6 +4,8 @@ import com.shaylee.api.dto.SysRouteConfDTO;
 import com.shaylee.api.feign.SysRouteConfClient;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Title:
  * Project: shaylee-common
@@ -15,7 +17,7 @@ import org.springframework.stereotype.Component;
 public class SysRouteConfClientFallback implements SysRouteConfClient {
 
     @Override
-    public SysRouteConfDTO getRouteConfList() {
+    public List<SysRouteConfDTO> getRouteConfList() {
         return null;
     }
 }
