@@ -12,56 +12,41 @@
     <packaging>jar</packaging>
 
     <dependencies>
-        <!--注册中心客户端-->
+        <!-- cloud组件 -->
         <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
-        </dependency>
-        <!--配置中心客户端-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
-        </dependency>
-        <!--sentinel-->
-        <dependency>
-            <groupId>com.alibaba.cloud</groupId>
-            <artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
-        </dependency>
-        <!-- 监控 -->
-        <dependency>
-            <groupId>de.codecentric</groupId>
-            <artifactId>spring-boot-admin-starter-client</artifactId>
-            <version>${spring-boot-admin.version}</version>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-cloud</artifactId>
+            <version>${shaylee.version}</version>
         </dependency>
 
-        <!-- web模块 -->
+        <!-- web组件 -->
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-web</artifactId>
+            <version>${shaylee.version}</version>
         </dependency>
-        <!-- undertow容器 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-undertow</artifactId>
-        </dependency>
+
         <!-- datasource -->
         <dependency>
             <groupId>com.shaylee</groupId>
             <artifactId>shaylee-common-datasource</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
-        <!-- datasource -->
+
+        <!-- rabbit -->
         <dependency>
             <groupId>com.shaylee</groupId>
             <artifactId>shaylee-common-rabbit</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
+
         <!-- gateway业务包 -->
         <dependency>
             <groupId>com.shaylee</groupId>
             <artifactId>shaylee-business-gateway</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
+
         <!-- spring-boot-devtools -->
 <!--        <dependency>-->
 <!--            <groupId>org.springframework.boot</groupId>-->

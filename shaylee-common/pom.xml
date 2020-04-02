@@ -17,5 +17,7 @@
         <module>shaylee-common-gateway</module>
         <module>shaylee-common-rabbit</module>
         <module>shaylee-common-datasource</module>
+        <module>shaylee-common-web</module>
+        <module>shaylee-common-cloud</module>
     </modules>
 </project>
