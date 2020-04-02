@@ -22,18 +22,18 @@ spring:
     name: shaylee-api
   cloud:
     nacos:
-      config:
-        server-addr: 192.168.0.224:18848
-        file-extension: yml
       discovery:
-        server-addr: 192.168.0.224:18848
+        server-addr: ${NACOS-HOST:zetar-register}:${NACOS-PORT:29959}
         metadata:
           management:
             context-path: /api/actuator
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
     # 限流熔断
     sentinel:
       transport:
-        dashboard: 192.168.0.224:18849
+        dashboard: ${SENTINEL-HOST:zetar-sentinel}:${SENTINEL-PORT:26131}
   profiles:
     active: dev
   boot:
