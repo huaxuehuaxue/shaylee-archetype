@@ -18,6 +18,8 @@ logging:
 spring:
   application:
     name: shaylee-gateway
+  profiles:
+    active: dev
   cloud:
     # 注册中心
     nacos:
@@ -46,8 +48,6 @@ spring:
 #          uri: lb://shaylee-api
 #          predicates:
 #            - Path=/api/**
-  profiles:
-    active: dev
   boot:
     admin:
       client:

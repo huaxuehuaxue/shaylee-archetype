@@ -20,6 +20,8 @@ logging:
 spring:
   application:
     name: shaylee-api
+  profiles:
+    active: dev
   cloud:
     nacos:
       discovery:
@@ -34,8 +36,6 @@ spring:
     sentinel:
       transport:
         dashboard: ${SENTINEL-HOST:zetar-sentinel}:${SENTINEL-PORT:26131}
-  profiles:
-    active: dev
   boot:
     admin:
       client:
