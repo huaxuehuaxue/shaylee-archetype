@@ -11,7 +11,7 @@ import java.util.List;
  * @author Adrian
  * @date 2020-03-24
  */
-public interface SysRouteConfServce {
+public interface SysRouteConfService {
 
     /**
      * 根据ID查询数据
