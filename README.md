@@ -12,7 +12,7 @@ shaylee-archetype，一套基于SpirngCloud的简洁轻量后端开发模板
 | 授权认证   | Spring Security OAuth2 | 🏗    | Jwt模式                          |
 | 服务容错   | SpringCloud Sentinel   | ✅    |                                  |
 | 服务调用   | SpringCloud OpenFeign  | 🏗    |                                  |
-| 分布式事务 | Seata                  | ✅    |                                  |
+| 分布式事务 | Seata                  | 🏗    |                                  |
 | 服务监控   | Spring Boot Admin      | ✅    |                                  |
 | 对象存储   | OSS/Minio              | 🏗    |                                  |
 | 任务调度   | Elastic-Job            | 🏗    |                                  |
