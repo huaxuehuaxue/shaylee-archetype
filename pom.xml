@@ -12,9 +12,9 @@
         <module>shaylee-common</module>
         <module>shaylee-business</module>
         <module>shaylee-service</module>
-        <module>shaylee-service-api</module>
+        <module>shaylee-service-client</module>
         <module>shaylee-gateway</module>
-        <module>shaylee-middleware</module>
+        <module>shaylee-platform</module>
     </modules>
 
     <properties>

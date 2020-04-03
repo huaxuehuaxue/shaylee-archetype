@@ -18,18 +18,20 @@ logging:
 spring:
   application:
     name: shaylee-gateway
+  profiles:
+    active: dev
   cloud:
     # 注册中心
     nacos:
-      config:
-        server-addr: 192.168.0.224:18848
-        file-extension: yml
       discovery:
-        server-addr: 192.168.0.224:18848
+        server-addr: ${NACOS-HOST:shaylee-register}:${NACOS-PORT:29959}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
     # 限流熔断
     sentinel:
       transport:
-        dashboard: 192.168.0.224:18849
+        dashboard: ${SENTINEL-HOST:shaylee-sentinel}:${SENTINEL-PORT:26131}
       scg:
         fallback:
           mode: response
@@ -46,8 +48,6 @@ spring:
 #          uri: lb://shaylee-api
 #          predicates:
 #            - Path=/api/**
-  profiles:
-    active: dev
   boot:
     admin:
       client:

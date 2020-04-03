@@ -2,10 +2,8 @@ package com.shaylee.gateway.support;
 
 import com.shaylee.business.gateway.factory.RouteDefinitionFactory;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
-import com.shaylee.business.gateway.manager.service.SysRouteConfServce;
-import com.shaylee.common.gateway.utils.RouteCacheHolder;
+import com.shaylee.business.gateway.manager.service.SysRouteConfService;
 import com.shaylee.business.gateway.factory.SysRouteConfFactory;
-import org.apache.commons.collections.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,14 +28,14 @@ import java.util.stream.Collectors;
 public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	private static Logger logger = LoggerFactory.getLogger(RedisRouteDefinitionWriter.class);
 	@Autowired
-	private SysRouteConfServce sysRouteConfServce;
+	private SysRouteConfService sysRouteConfService;
 
 	@Override
 	public Mono<Void> save(Mono<RouteDefinition> route) {
 		return route.flatMap(r -> {
 			logger.info("保存路由信息{}", r);
 			SysRouteConfEntity sysRouteConfEntity = SysRouteConfFactory.buildSysRouteConfEntity(r);
-			sysRouteConfServce.insert(sysRouteConfEntity);
+			sysRouteConfService.insert(sysRouteConfEntity);
 			/*RouteCacheHolder.removeRouteList();*/
 			return Mono.empty();
 		});
@@ -47,7 +45,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 	public Mono<Void> delete(Mono<String> routeId) {
 		routeId.subscribe(id -> {
 			logger.info("删除路由信息{}", id);
-			sysRouteConfServce.deleteByRouteId(id);
+			sysRouteConfService.deleteByRouteId(id);
 		});
 		/*RouteCacheHolder.removeRouteList();*/
 		return Mono.empty();
@@ -70,7 +68,7 @@ public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
 			return Flux.fromIterable(routeList);
 		}*/
 
-		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfServce.queryAll().stream()
+		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfService.queryAll().stream()
 				.sorted(Comparator.comparing(SysRouteConfEntity::getSort))
 				.collect(Collectors.toList());
 		List<RouteDefinition> values = RouteDefinitionFactory.buildRouteDefinition(routeConfEntityList);

@@ -3,7 +3,7 @@ package com.shaylee.api.controller;
 import com.shaylee.business.gateway.factory.RouteDefinitionFactory;
 import com.shaylee.business.gateway.factory.SysRouteConfFactory;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
-import com.shaylee.business.gateway.manager.service.SysRouteConfServce;
+import com.shaylee.business.gateway.manager.service.SysRouteConfService;
 import com.shaylee.common.core.base.result.Result;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteDefinition;
@@ -25,7 +25,7 @@ import java.util.List;
 public class SysRouteConfController {
 
     @Autowired
-    private SysRouteConfServce sysRouteConfServce;
+    private SysRouteConfService sysRouteConfService;
 
     @RequestMapping("/save")
     public Result save() {
@@ -34,13 +34,13 @@ public class SysRouteConfController {
         for (RouteDefinition routeDefinition : routeDefinitionList) {
             sysRouteConfEntities.add(SysRouteConfFactory.buildSysRouteConfEntity(routeDefinition));
         }
-        sysRouteConfServce.batchInsert(sysRouteConfEntities);
+        sysRouteConfService.batchInsert(sysRouteConfEntities);
         return Result.success();
     }
 
     @RequestMapping("/list")
     public Result list() {
-        List<SysRouteConfEntity> sysRouteConfEntityList = sysRouteConfServce.queryAll();
+        List<SysRouteConfEntity> sysRouteConfEntityList = sysRouteConfService.queryAll();
         return Result.data(sysRouteConfEntityList);
     }
 }

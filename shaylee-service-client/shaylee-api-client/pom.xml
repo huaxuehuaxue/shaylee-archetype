@@ -3,17 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>shaylee-archetype</artifactId>
+        <artifactId>shaylee-service-client</artifactId>
         <groupId>com.shaylee</groupId>
         <version>1.0.0</version>
     </parent>
-    <packaging>pom</packaging>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>shaylee-service</artifactId>
 
-    <modules>
-        <module>shaylee-api</module>
-        <module>shaylee-api-consumer</module>
-        <module>shaylee-mq-consumer</module>
-    </modules>
+    <artifactId>shaylee-api-client</artifactId>
+    <packaging>jar</packaging>
+
 </project>

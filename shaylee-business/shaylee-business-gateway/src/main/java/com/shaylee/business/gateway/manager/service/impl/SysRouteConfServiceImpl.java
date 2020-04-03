@@ -2,7 +2,7 @@ package com.shaylee.business.gateway.manager.service.impl;
 
 import com.shaylee.business.gateway.manager.dao.SysRouteConfDao;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
-import com.shaylee.business.gateway.manager.service.SysRouteConfServce;
+import com.shaylee.business.gateway.manager.service.SysRouteConfService;
 import com.shaylee.common.core.base.constant.BaseConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.List;
  * @date 2020-03-24
  */
 @Service
-public class SysRouteConfServceImpl implements SysRouteConfServce {
+public class SysRouteConfServiceImpl implements SysRouteConfService {
 
     @Autowired
     private SysRouteConfDao sysRouteConfDao;

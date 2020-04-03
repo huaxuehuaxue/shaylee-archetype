@@ -8,7 +8,7 @@
         <version>1.0.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <artifactId>shaylee-api</artifactId>
+    <artifactId>shaylee-api-consumer</artifactId>
     <packaging>jar</packaging>
 
     <dependencies>
@@ -53,6 +53,12 @@
 <!--            <artifactId>spring-boot-devtools</artifactId>-->
 <!--            <optional>true</optional> &lt;!&ndash; 表示依赖不会传递 &ndash;&gt;-->
 <!--        </dependency>-->
+
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-api-client</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
     </dependencies>
 
     <build>
