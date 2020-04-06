@@ -19,5 +19,6 @@
         <module>shaylee-common-datasource</module>
         <module>shaylee-common-web</module>
         <module>shaylee-common-cloud</module>
+        <module>shaylee-common-oss</module>
     </modules>
 </project>
