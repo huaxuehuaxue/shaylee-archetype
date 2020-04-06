@@ -17,21 +17,21 @@ logging:
 
 spring:
   application:
-    name: shaylee-monitor
+    name: @artifactId@
   cloud:
+    # 注册中心
     nacos:
-      config:
-        server-addr: 192.168.0.224:18848
-        file-extension: yml
       discovery:
-        server-addr: 192.168.0.224:18848
-    # 限流熔断
-    sentinel:
-      transport:
-        dashboard: 192.168.0.224:18849
+        server-addr: ${NACOS-HOST:shaylee-register}:${NACOS-PORT:29959}
+      config:
+        server-addr: ${spring.cloud.nacos.discovery.server-addr}
+        file-extension: yml
   boot:
     admin:
       context-path: /monitor
+      ui:
+        title: 'Shaylee 服务状态监控'
+        brand: 'Shaylee 服务状态监控'
 
 management:
   endpoints:

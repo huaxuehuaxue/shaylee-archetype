@@ -25,7 +25,7 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: ${NACOS-HOST:zetar-register}:${NACOS-PORT:29959}
+        server-addr: ${NACOS-HOST:shaylee-register}:${NACOS-PORT:29959}
         metadata:
           management:
             context-path: /api/actuator
@@ -35,11 +35,11 @@ spring:
     # 限流熔断
     sentinel:
       transport:
-        dashboard: ${SENTINEL-HOST:zetar-sentinel}:${SENTINEL-PORT:26131}
+        dashboard: ${SENTINEL-HOST:shaylee-sentinel}:${SENTINEL-PORT:26131}
   boot:
     admin:
       client:
-        url: http://localhost:18100
+        url: ${MONITOR-HOST:shaylee-monitor}:${MONITOR-PORT:61110}
 
 # mybatis原生配置
 mybatis:
