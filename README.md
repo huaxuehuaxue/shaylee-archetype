@@ -18,4 +18,4 @@ shaylee-archetype，一套基于SpirngCloud的简洁轻量后端开发模板
 | 任务调度   | Elastic-Job            | 🏗    |                                  |
 | 分库分表   | ShardingSphere         | ✅    |                                  |
 | CRUD       | PageHelper + Mapper    | ✅    |                                  |
-| 缓存       | Redis                  | 🏗    | 扩展@Cacheable添加失效时间支持   |
+| 缓存       | Redis                  | ✅    | 扩展@Cacheable添加失效时间支持   |
