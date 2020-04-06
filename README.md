@@ -14,7 +14,7 @@ shaylee-archetype，一套基于SpirngCloud的简洁轻量后端开发模板
 | 服务调用   | SpringCloud OpenFeign  | 🏗    |                                  |
 | 分布式事务 | Seata                  | 🏗    |                                  |
 | 服务监控   | Spring Boot Admin      | ✅    |                                  |
-| 对象存储   | OSS/Minio              | 🏗    |                                  |
+| 对象存储   | OSS                    | ✅    |                                  |
 | 任务调度   | Elastic-Job            | 🏗    |                                  |
 | 分库分表   | ShardingSphere         | ✅    |                                  |
 | CRUD       | PageHelper + Mapper    | ✅    |                                  |
