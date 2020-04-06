@@ -19,7 +19,7 @@ logging:
 
 spring:
   application:
-    name: shaylee-api
+    name: @artifactId@
   profiles:
     active: dev
   cloud:

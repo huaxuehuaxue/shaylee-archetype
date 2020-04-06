@@ -25,12 +25,14 @@ management:
       show-details: ALWAYS
 
 spring:
+  application:
+    name: @artifactId@
   profiles:
     active: dev
   boot:
     admin:
       client:
-        url: http://localhost:18100
+        url: ${MONITOR-HOST:shaylee-monitor}:${MONITOR-PORT:61110}
 
 # mybatis原生配置
 mybatis:
