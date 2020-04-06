@@ -1,6 +1,6 @@
 package com.shaylee.common.redis.service.impl;
 
-import com.shaylee.common.redis.constant.CacheConstant;
+import com.shaylee.common.redis.constant.CacheTime;
 import com.shaylee.common.redis.service.CacheService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.HashOperations;
@@ -26,20 +26,20 @@ public class RedisServiceImpl implements CacheService {
     @Override
     public void set(String key, Object value, long expire){
         redisTemplate.opsForValue().set(key, value);
-        if(expire != CacheConstant.NOT_EXPIRE){
+        if(expire != CacheTime.NOT_EXPIRE){
             expire(key, expire);
         }
     }
 
     @Override
     public void set(String key, Object value){
-        set(key, value, CacheConstant.DEFAULT_EXPIRE);
+        set(key, value, CacheTime.DEFAULT_EXPIRE);
     }
 
     @Override
     public Object get(String key, long expire) {
         Object value = redisTemplate.opsForValue().get(key);
-        if(expire != CacheConstant.NOT_EXPIRE){
+        if(expire != CacheTime.NOT_EXPIRE){
             expire(key, expire);
         }
         return value;
@@ -47,7 +47,7 @@ public class RedisServiceImpl implements CacheService {
 
     @Override
     public Object get(String key) {
-        return get(key, CacheConstant.NOT_EXPIRE);
+        return get(key, CacheTime.NOT_EXPIRE);
     }
 
     @Override
@@ -73,28 +73,28 @@ public class RedisServiceImpl implements CacheService {
 
     @Override
     public void hMSet(String key, Map<String, Object> map){
-        hMSet(key, map, CacheConstant.DEFAULT_EXPIRE);
+        hMSet(key, map, CacheTime.DEFAULT_EXPIRE);
     }
 
     @Override
     public void hMSet(String key, Map<String, Object> map, long expire){
         redisTemplate.opsForHash().putAll(key, map);
 
-        if(expire != CacheConstant.NOT_EXPIRE){
+        if(expire != CacheTime.NOT_EXPIRE){
             expire(key, expire);
         }
     }
 
     @Override
     public void hSet(String key, String field, Object value) {
-        hSet(key, field, value, CacheConstant.DEFAULT_EXPIRE);
+        hSet(key, field, value, CacheTime.DEFAULT_EXPIRE);
     }
 
     @Override
     public void hSet(String key, String field, Object value, long expire) {
         redisTemplate.opsForHash().put(key, field, value);
 
-        if(expire != CacheConstant.NOT_EXPIRE){
+        if(expire != CacheTime.NOT_EXPIRE){
             expire(key, expire);
         }
     }
@@ -111,14 +111,14 @@ public class RedisServiceImpl implements CacheService {
 
     @Override
     public void leftPush(String key, Object value){
-        leftPush(key, value, CacheConstant.DEFAULT_EXPIRE);
+        leftPush(key, value, CacheTime.DEFAULT_EXPIRE);
     }
 
     @Override
     public void leftPush(String key, Object value, long expire){
         redisTemplate.opsForList().leftPush(key, value);
 
-        if(expire != CacheConstant.NOT_EXPIRE){
+        if(expire != CacheTime.NOT_EXPIRE){
             expire(key, expire);
         }
     }

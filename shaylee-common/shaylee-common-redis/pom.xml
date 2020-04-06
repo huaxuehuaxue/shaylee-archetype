@@ -16,5 +16,10 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-core</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
     </dependencies>
 </project>
