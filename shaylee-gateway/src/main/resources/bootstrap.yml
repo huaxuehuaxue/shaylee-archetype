@@ -35,8 +35,8 @@ spring:
       scg:
         fallback:
           mode: response
-          response-status: 426
-          response-body: error request
+#          response-status: 426
+#          response-body: error request
     # 网关
 #    gateway:
 #      routes:
