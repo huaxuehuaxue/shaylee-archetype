@@ -25,8 +25,8 @@ import java.util.stream.Collectors;
  * @date 2020-03-22
  */
 @Component
-public class RedisRouteDefinitionWriter implements RouteDefinitionRepository {
-	private static Logger logger = LoggerFactory.getLogger(RedisRouteDefinitionWriter.class);
+public class RouteDefinitionWriter implements RouteDefinitionRepository {
+	private static Logger logger = LoggerFactory.getLogger(RouteDefinitionWriter.class);
 	@Autowired
 	private SysRouteConfService sysRouteConfService;
 
