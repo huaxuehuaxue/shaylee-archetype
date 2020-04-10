@@ -14,7 +14,7 @@ import java.util.List;
  * @author Adrian
  * @date 2020-04-03
  */
-@FeignClient(name = "shaylee-api", fallbackFactory = SysRouteConfClientFallback.class)
+@FeignClient(value = "shaylee-api", path = "api", fallbackFactory = SysRouteConfClientFallback.class)
 public interface SysRouteConfClient {
 
     @GetMapping("/routeConf/list")
