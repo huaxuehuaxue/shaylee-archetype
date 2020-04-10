@@ -41,6 +41,10 @@ spring:
       client:
         url: ${MONITOR-HOST:shaylee-monitor}:${MONITOR-PORT:61110}
 
+feign:
+  sentinel:
+    enabled: true
+
 # mybatis原生配置
 mybatis:
   # 搜索指定包别名

@@ -1,4 +1,4 @@
-package com.shaylee.common.cloud.rule;
+package com.shaylee.gateway.rule;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.alibaba.cloud.nacos.ribbon.NacosServer;
@@ -19,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  * @date 2020-04-05
  */
 @Slf4j
-public class NacosWeightLoadBalancerRule extends AbstractLoadBalancerRule {
+public class NacosWeightRule extends AbstractLoadBalancerRule {
     @Autowired
     private NacosDiscoveryProperties discoveryProperties;
 
