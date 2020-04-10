@@ -40,6 +40,13 @@
             <version>${shaylee.version}</version>
         </dependency>
 
+        <!-- redis -->
+        <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-redis</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
+
         <!-- gateway业务包 -->
         <dependency>
             <groupId>com.shaylee</groupId>

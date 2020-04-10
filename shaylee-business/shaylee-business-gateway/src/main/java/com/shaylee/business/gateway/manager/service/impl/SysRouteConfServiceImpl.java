@@ -5,6 +5,8 @@ import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
 import com.shaylee.business.gateway.manager.service.SysRouteConfService;
 import com.shaylee.common.core.base.constant.BaseConstant;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -31,6 +33,7 @@ public class SysRouteConfServiceImpl implements SysRouteConfService {
     }
 
     @Override
+    @Cacheable(value = "sys:route:conf#30", key = "'queryAll'")
     public List<SysRouteConfEntity> queryAll() {
         return sysRouteConfDao.selectAll();
     }
