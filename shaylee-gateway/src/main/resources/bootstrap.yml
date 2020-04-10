@@ -53,6 +53,10 @@ spring:
       client:
         url: ${MONITOR-HOST:shaylee-monitor}:${MONITOR-PORT:61110}
 
+shaylee-api:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.vdadmin.gateway.rule.NacosWeightRule
+
 # mybatis原生配置
 mybatis:
   # 搜索指定包别名
