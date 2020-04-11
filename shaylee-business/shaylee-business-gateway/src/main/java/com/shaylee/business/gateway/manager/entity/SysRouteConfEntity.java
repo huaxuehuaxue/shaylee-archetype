@@ -1,12 +1,12 @@
 package com.shaylee.business.gateway.manager.entity;
 
+import com.shaylee.common.datasource.entity.BaseEntity;
 import lombok.Data;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
-import java.io.Serializable;
 
 /**
  * 路由配置表(SysRouteConf)实体类
@@ -17,7 +17,7 @@ import java.io.Serializable;
  */
 @Data
 @Table(name = "sys_route_conf")
-public class SysRouteConfEntity implements Serializable {
+public class SysRouteConfEntity extends BaseEntity {
     private static final long serialVersionUID = -31333469256676509L;
 
     /**

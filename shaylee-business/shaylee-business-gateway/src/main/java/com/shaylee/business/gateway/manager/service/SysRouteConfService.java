@@ -1,6 +1,7 @@
 package com.shaylee.business.gateway.manager.service;
 
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
+import com.shaylee.common.datasource.service.BaseService;
 
 import java.util.List;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * @author Adrian
  * @date 2020-03-24
  */
-public interface SysRouteConfService {
+public interface SysRouteConfService extends BaseService<SysRouteConfEntity> {
 
     /**
      * 根据ID查询数据
@@ -27,12 +28,12 @@ public interface SysRouteConfService {
      */
     List<SysRouteConfEntity> queryAll();
 
-    /**
-     * 新增数据
-     *
-     * @param sysRouteConfEntity 实例对象
-     */
-    void insert(SysRouteConfEntity sysRouteConfEntity);
+//    /**
+//     * 新增数据
+//     *
+//     * @param sysRouteConfEntity 实例对象
+//     */
+//    void insert(SysRouteConfEntity sysRouteConfEntity);
 
     /**
      * 批量新增数据

@@ -4,6 +4,7 @@ import com.shaylee.business.gateway.manager.dao.SysRouteConfDao;
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
 import com.shaylee.business.gateway.manager.service.SysRouteConfService;
 import com.shaylee.common.core.base.constant.BaseConstant;
+import com.shaylee.common.datasource.service.impl.BaseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.cache.annotation.EnableCaching;
@@ -19,7 +20,7 @@ import java.util.List;
  * @date 2020-03-24
  */
 @Service
-public class SysRouteConfServiceImpl implements SysRouteConfService {
+public class SysRouteConfServiceImpl extends BaseServiceImpl<SysRouteConfDao, SysRouteConfEntity> implements SysRouteConfService {
 
     @Autowired
     private SysRouteConfDao sysRouteConfDao;
@@ -38,10 +39,10 @@ public class SysRouteConfServiceImpl implements SysRouteConfService {
         return sysRouteConfDao.selectAll();
     }
 
-    @Override
-    public void insert(SysRouteConfEntity sysRouteConfEntity) {
-        sysRouteConfDao.insertSelective(sysRouteConfEntity);
-    }
+//    @Override
+//    public void insert(SysRouteConfEntity sysRouteConfEntity) {
+//        sysRouteConfDao.insertSelective(sysRouteConfEntity);
+//    }
 
     @Override
     public void batchInsert(List<SysRouteConfEntity> sysRouteConfEntityList) {
