@@ -1,5 +1,7 @@
 package com.shaylee.common.datasource.service;
 
+import com.github.pagehelper.PageInfo;
+
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
@@ -12,6 +14,56 @@ import java.util.List;
  * @date 2020-04-12
  */
 public interface BaseService<T> {
+
+    /**
+     * <p>
+     * 根据 ID 查询
+     * </p>
+     *
+     * @param id 主键ID
+     * @return 查询结果
+     */
+    T selectById(Serializable id);
+
+    /**
+     * <p>
+     * 条件查询
+     * </p>
+     *
+     * @param entity 实体
+     * @return 查询结果
+     */
+    List<T> selectList(T entity);
+
+    /**
+     * <p>
+     * 查询所有
+     * </p>
+     *
+     * @return 查询结果
+     */
+    List<T> selectAll();
+
+    /**
+     * <p>
+     * 查询数据量
+     * </p>
+     *
+     * @return 查询结果
+     */
+    int selectCount(T entity);
+
+    /**
+     * <p>
+     * 分页条件查询
+     * </p>
+     *
+     * @param entity    查询实例
+     * @param pageNum   页码
+     * @param pageSize  每页数据量
+     * @return 查询结果
+     */
+    PageInfo<T> selectPage(T entity, int pageNum, int pageSize);
 
     /**
      * <p>
@@ -50,16 +102,6 @@ public interface BaseService<T> {
      * @param entity 实体对象
      */
     boolean updateById(T entity);
-
-    /**
-     * <p>
-     * 根据 ID 查询
-     * </p>
-     *
-     * @param id 主键ID
-     * @return 查询结果
-     */
-    T selectById(Serializable id);
 
     /**
      * <p>

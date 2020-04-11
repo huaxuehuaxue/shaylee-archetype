@@ -1,5 +1,7 @@
 package com.shaylee.common.datasource.service.impl;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.google.common.base.Joiner;
 import com.google.common.collect.Lists;
 import com.shaylee.common.core.base.constant.BaseConstant;
@@ -27,6 +29,32 @@ import java.util.List;
 @AllArgsConstructor
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> implements BaseService<T> {
     protected M baseMapper;
+
+    @Override
+    public T selectById(Serializable id) {
+        return baseMapper.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<T> selectList(T entity) {
+        return baseMapper.select(entity);
+    }
+
+    @Override
+    public List<T> selectAll() {
+        return baseMapper.selectAll();
+    }
+
+    @Override
+    public int selectCount(T entity) {
+        return baseMapper.selectCount(entity);
+    }
+
+    @Override
+    public PageInfo<T> selectPage(T entity, int pageNum, int pageSize) {
+        return PageHelper.startPage(pageNum, pageSize)
+                .doSelectPageInfo(() -> baseMapper.select(entity));
+    }
 
     @Override
     public boolean insert(T entity) {
@@ -58,11 +86,6 @@ public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> impl
     @Override
     public boolean updateById(T entity) {
         return SqlUtil.retBool(baseMapper.updateByPrimaryKeySelective(entity));
-    }
-
-    @Override
-    public T selectById(Serializable id) {
-        return baseMapper.selectByPrimaryKey(id);
     }
 
     @Override
