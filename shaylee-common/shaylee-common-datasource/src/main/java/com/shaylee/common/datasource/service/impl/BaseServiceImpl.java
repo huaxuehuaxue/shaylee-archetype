@@ -9,7 +9,6 @@ import com.shaylee.common.datasource.entity.BaseEntity;
 import com.shaylee.common.datasource.mapper.BaseMapper;
 import com.shaylee.common.datasource.service.BaseService;
 import com.shaylee.common.datasource.utils.SqlUtil;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
