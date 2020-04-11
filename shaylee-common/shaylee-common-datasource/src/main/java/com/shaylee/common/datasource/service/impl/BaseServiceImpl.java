@@ -10,6 +10,7 @@ import com.shaylee.common.datasource.mapper.BaseMapper;
 import com.shaylee.common.datasource.service.BaseService;
 import com.shaylee.common.datasource.utils.SqlUtil;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 import tk.mybatis.mapper.entity.Example;
@@ -26,8 +27,8 @@ import java.util.List;
  * @author Adrian
  * @date 2020-04-12
  */
-@AllArgsConstructor
 public class BaseServiceImpl<M extends BaseMapper<T>, T extends BaseEntity> implements BaseService<T> {
+    @Autowired
     protected M baseMapper;
 
     @Override
