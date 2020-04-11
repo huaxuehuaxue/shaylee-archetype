@@ -2,7 +2,7 @@ package com.shaylee.business.gateway.manager.dao;
 
 import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
 import com.shaylee.common.datasource.annotation.MybatisMapper;
-import com.shaylee.common.datasource.base.BaseMapper;
+import com.shaylee.common.datasource.mapper.BaseMapper;
 
 /**
  * 路由配置表(SysRouteConf)数据层
