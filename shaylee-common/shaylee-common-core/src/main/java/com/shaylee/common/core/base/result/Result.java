@@ -1,7 +1,10 @@
 package com.shaylee.common.core.base.result;
 
-import java.util.HashMap;
-import java.util.Map;
+import lombok.*;
+import lombok.experimental.Accessors;
+import org.apache.http.HttpStatus;
+
+import java.io.Serializable;
 
 /**
  * 通用响应实体类
@@ -10,54 +13,59 @@ import java.util.Map;
  * @author Adrian
  * @date 2020-03-24
  */
-public class Result extends HashMap<String, Object> {
-	private static final long serialVersionUID = -8157613083634272196L;
+@Builder
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
+@Accessors(chain = true)
+public class Result<T> implements Serializable {
+	private static final long serialVersionUID = 1L;
 
-	public Result() {
-		put("code", 0);
-		put("msg", "success");
+	@Getter
+	@Setter
+	private int code;
+
+	@Getter
+	@Setter
+	private String msg;
+
+	@Getter
+	@Setter
+	private T data;
+
+	public static <T> Result<T> success() {
+		return restResult(null, HttpStatus.SC_OK, null);
 	}
 
-	public static Result error() {
-		return error(500, "未知异常，请联系管理员");
+	public static <T> Result<T> success(T data) {
+		return restResult(data, HttpStatus.SC_OK, null);
 	}
 
-	public static Result error(String msg) {
-		return error(500, msg);
+	public static <T> Result<T> success(T data, String msg) {
+		return restResult(data, HttpStatus.SC_OK, msg);
 	}
 
-	public static Result error(int code, String msg) {
-		Result r = new Result();
-		r.put("code", code);
-		r.put("msg", msg);
-		return r;
+	public static <T> Result<T> error() {
+		return restResult(null, HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
 	}
 
-	public static Result success(String msg) {
-		Result r = new Result();
-		r.put("msg", msg);
-		return r;
+	public static <T> Result<T> error(String msg) {
+		return restResult(null, HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
 	}
 
-	public static Result data(Object obj) {
-		Result r = new Result();
-		r.put("data", obj);
-		return r;
+	public static <T> Result<T> error(T data) {
+		return restResult(data, HttpStatus.SC_INTERNAL_SERVER_ERROR, null);
 	}
 
-	public static Result success(Map<String, Object> map) {
-		Result r = new Result();
-		r.putAll(map);
-		return r;
+	public static <T> Result<T> error(T data, String msg) {
+		return restResult(data, HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
 	}
 
-	public static Result success() {
-		return new Result();
-	}
-
-	@Override
-	public Result put(String key, Object value) {
-		super.put(key, value);
-		return this;
+	private static <T> Result<T> restResult(T data, int code, String msg) {
+		Result<T> apiResult = new Result<>();
+		apiResult.setCode(code);
+		apiResult.setData(data);
+		apiResult.setMsg(msg);
+		return apiResult;
 	}
 }
