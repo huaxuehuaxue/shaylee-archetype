@@ -2,7 +2,6 @@ package com.shaylee.common.core.base.result;
 
 import lombok.*;
 import lombok.experimental.Accessors;
-import org.apache.http.HttpStatus;
 
 import java.io.Serializable;
 
@@ -34,31 +33,31 @@ public class Result<T> implements Serializable {
 	private T data;
 
 	public static <T> Result<T> success() {
-		return restResult(null, HttpStatus.SC_OK, null);
+		return restResult(null, 200, null);
 	}
 
 	public static <T> Result<T> success(T data) {
-		return restResult(data, HttpStatus.SC_OK, null);
+		return restResult(data, 200, null);
 	}
 
 	public static <T> Result<T> success(T data, String msg) {
-		return restResult(data, HttpStatus.SC_OK, msg);
+		return restResult(data, 200, msg);
 	}
 
 	public static <T> Result<T> error() {
-		return restResult(null, HttpStatus.SC_INTERNAL_SERVER_ERROR, "未知异常，请联系管理员");
+		return restResult(null, 500, "未知异常，请联系管理员");
 	}
 
 	public static <T> Result<T> error(String msg) {
-		return restResult(null, HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
+		return restResult(null, 500, msg);
 	}
 
 	public static <T> Result<T> error(T data) {
-		return restResult(data, HttpStatus.SC_INTERNAL_SERVER_ERROR, null);
+		return restResult(data, 500, null);
 	}
 
 	public static <T> Result<T> error(T data, String msg) {
-		return restResult(data, HttpStatus.SC_INTERNAL_SERVER_ERROR, msg);
+		return restResult(data, 500, msg);
 	}
 
 	private static <T> Result<T> restResult(T data, int code, String msg) {
