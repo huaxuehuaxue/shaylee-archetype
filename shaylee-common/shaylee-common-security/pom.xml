@@ -17,11 +17,22 @@
             <artifactId>shaylee-common-core</artifactId>
             <version>${shaylee.version}</version>
         </dependency>
-        <!-- Token生成与解析 -->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
+            <artifactId>jjwt-api</artifactId>
             <version>${jwt.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-impl</artifactId>
+            <version>${jwt.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt-jackson</artifactId>
+            <version>${jwt.version}</version>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 </project>
