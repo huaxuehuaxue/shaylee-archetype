@@ -91,6 +91,7 @@ public class SentinelSCGConfig {
 			return;
 		}
 		if (ConfigConstants.FALLBACK_MSG_RESPONSE.equals(fallbackProperties.getMode())) {
+			// 添加限流响应接口
 			fallbackProperties.setResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 			fallbackProperties.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			fallbackProperties.setResponseBody(JSON.toJSONString(Result.error("Requests are too frequent, please try again later.")));
