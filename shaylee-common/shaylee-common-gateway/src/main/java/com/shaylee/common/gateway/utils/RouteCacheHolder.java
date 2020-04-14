@@ -12,6 +12,7 @@ import java.util.List;
  * @author Adrian
  * @date 2020-03-22
  */
+@Deprecated
 public class RouteCacheHolder {
 
 	private static List<RouteDefinition> routeDefinitions = new LinkedList<>();

@@ -1,4 +1,4 @@
-package com.shaylee.gateway.rule;
+package com.shaylee.common.gateway.rule;
 
 import com.alibaba.cloud.nacos.NacosDiscoveryProperties;
 import com.alibaba.cloud.nacos.ribbon.NacosServer;

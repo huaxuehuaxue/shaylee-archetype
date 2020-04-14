@@ -1,7 +1,7 @@
-package com.shaylee.gateway.exception;
+package com.shaylee.common.gateway.exception;
 
 import com.shaylee.common.core.base.result.Result;
-import com.shaylee.gateway.utils.WebfluxResponseUtils;
+import com.shaylee.common.gateway.utils.WebfluxResponseUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.web.reactive.error.ErrorWebExceptionHandler;
 import org.springframework.context.annotation.Primary;

@@ -59,7 +59,7 @@ feign:
 
 shaylee-api:
   ribbon:
-    NFLoadBalancerRuleClassName: com.vdadmin.gateway.rule.NacosWeightRule
+    NFLoadBalancerRuleClassName: com.shaylee.common.gateway.rule.NacosWeightRule
 
 # mybatis原生配置
 mybatis:

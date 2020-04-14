@@ -1,4 +1,4 @@
-package com.shaylee.gateway.utils;
+package com.shaylee.common.gateway.utils;
 
 import org.springframework.web.server.ServerWebExchange;
 

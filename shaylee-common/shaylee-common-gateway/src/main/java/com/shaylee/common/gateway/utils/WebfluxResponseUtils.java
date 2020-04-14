@@ -1,4 +1,4 @@
-package com.shaylee.gateway.utils;
+package com.shaylee.common.gateway.utils;
 
 import com.alibaba.fastjson.JSON;
 import org.springframework.core.io.buffer.DataBuffer;

@@ -1,6 +1,6 @@
 package com.shaylee.gateway.support;
 
-import com.shaylee.gateway.utils.WebFluxRequestHolder;
+import com.shaylee.common.gateway.utils.WebFluxRequestHolder;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import org.apache.commons.lang3.StringUtils;
