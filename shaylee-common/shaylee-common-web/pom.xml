@@ -14,6 +14,17 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.shaylee</groupId>
+            <artifactId>shaylee-common-core</artifactId>
+            <version>${shaylee.version}</version>
+        </dependency>
+        <!-- 客户端解析工具 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>${bitwalker.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
