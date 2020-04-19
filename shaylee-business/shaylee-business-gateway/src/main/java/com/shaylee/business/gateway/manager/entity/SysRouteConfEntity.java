@@ -1,7 +1,8 @@
 package com.shaylee.business.gateway.manager.entity;
 
 import com.shaylee.common.datasource.entity.BaseEntity;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,7 +16,8 @@ import java.util.Date;
  * @author Adrian
  * @date 2020-03-24
  */
-@Data
+@Getter
+@Setter
 @Table(name = "sys_route_conf")
 public class SysRouteConfEntity extends BaseEntity {
     private static final long serialVersionUID = -31333469256676509L;

@@ -2,8 +2,7 @@ package com.shaylee.api.consumer.controller;
 
 import com.shaylee.api.dto.SysRouteConfDTO;
 import com.shaylee.api.feign.SysRouteConfClient;
-import com.shaylee.business.gateway.manager.entity.SysRouteConfEntity;
-import com.shaylee.common.core.base.result.Result;
+import com.shaylee.common.core.base.result.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,8 +24,8 @@ public class SysRouteConfController {
     private SysRouteConfClient sysRouteConfClient;
 
     @RequestMapping("/list")
-    public Result list() {
+    public R list() {
         List<SysRouteConfDTO> sysRouteConfEntityList = sysRouteConfClient.getRouteConfList();
-        return Result.data(sysRouteConfEntityList);
+        return R.data(sysRouteConfEntityList);
     }
 }

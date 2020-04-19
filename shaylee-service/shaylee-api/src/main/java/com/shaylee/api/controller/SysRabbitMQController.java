@@ -2,7 +2,7 @@ package com.shaylee.api.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.shaylee.common.core.base.result.Result;
+import com.shaylee.common.core.base.result.R;
 import com.shaylee.common.rabbit.service.AmqpService;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,14 +36,14 @@ public class SysRabbitMQController {
     private ObjectMapper objectMapper;
 
     @RequestMapping("/test")
-    public Result test() throws JsonProcessingException {
+    public R test() throws JsonProcessingException {
         TestRabbit testRabbit = new TestRabbit();
         testRabbit.setUserId(10001L);
         testRabbit.setUserName("adrian");
         testRabbit.setCreateDate(new Date());
         testRabbit.setUpdateDate(new Date());
         amqpService.sendMessage(SHAYLEE_TEST_EXCHANGE, SHAYLEE_TEST_ROUTHINGKEY, objectMapper.writeValueAsString(testRabbit));
-        return Result.success();
+        return R.success();
     }
 
     @Data
