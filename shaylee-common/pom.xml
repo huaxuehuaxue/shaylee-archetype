@@ -21,5 +21,6 @@
         <module>shaylee-common-cloud</module>
         <module>shaylee-common-oss</module>
         <module>shaylee-common-security</module>
+        <module>shaylee-common-mongodb</module>
     </modules>
 </project>
