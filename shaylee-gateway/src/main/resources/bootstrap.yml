@@ -30,11 +30,18 @@ spring:
         file-extension: yml
     # 限流熔断
     sentinel:
+      # 容器启动时初始化，默认false(懒加载)
+      eager: true
+      filter:
+        url-patterns: /**
       transport:
         dashboard: ${SENTINEL-HOST:shaylee-sentinel}:${SENTINEL-PORT:26131}
       scg:
         fallback:
           mode: response
+      log:
+        dir: shaylee-sentinel-log
+        switch-pid: true
 #          response-status: 426
 #          response-body: error request
     # 网关
@@ -56,6 +63,66 @@ spring:
 feign:
   sentinel:
     enabled: true
+  okhttp:
+    enabled: true
+  httpclient:
+    enabled: false
+  client:
+    config:
+      default:
+        connectTimeout: 10000
+        readTimeout: 10000
+  compression:
+    # 开启Feign请求压缩
+    request:
+      enabled: true
+      # 配置压缩文档类型及最小压缩的文档大小
+      mime-types: text/xml,application/xml,application/json
+        min-request-size: 2048
+    # 开启Feign响应压缩
+    response:
+      enabled: true
+
+hystrix:
+  threadpool:
+    default:
+      # 并发执行的核心线程数，默认10
+      coreSize: 100
+      # 设置线程池的最大大小，只有在设置allowMaximumSizeToDivergeFromCoreSize的时候才能生效，默认是10个线程
+      maximumSize: 2000
+      # 允许线程池大小自动动态调整，设置为true之后，maxSize就生效了
+      # 此时如果一开始是coreSize个线程，随着并发量上来，那么就会自动获取新的线程
+      # 但是如果线程在keepAliveTimeMinutes内空闲，就会被自动释放掉，默认是false
+      allowMaximumSizeToDivergeFromCoreSize: true
+      # BlockingQueue请求等待队列的最大队列数
+      # 默认值：-1
+      # 如果使用正数，队列将从SynchronizeQueue改为LinkedBlockingQueue
+      maxQueueSize: -1
+      # 设置保持存活的时间，单位是分钟，默认是1。
+      # 如果设置allowMaximumSizeToDivergeFromCoreSize为true，那么coreSize就不等于maxSize，
+      # 此时线程池大小是可以动态调整的，可以获取新的线程，也可以释放一些线程，
+      # 如果coreSize < maxSize，那么这个参数就设置了一个线程多长时间空闲之后，就会被释放掉
+      keepAliveTimeMinutes: 1
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+
+ribbon:
+  # 请求处理的超时时间 默认1秒，单位ms
+  ReadTimeout: 10000
+  # 请求连接的超时时间 默认1秒，单位ms
+  ConnectTimeout: 10000
+  # 对当前实例的重试次数 默认0
+  MaxAutoRetries: 0
+  # 切换实例的重试次数 默认1
+  MaxAutoRetriesNextServer: 1
+  # 对所有操作请求都进行重试,不配置这个MaxAutoRetries不起作用 默认false
+  OkToRetryOnAllOperations: false
+  # 从注册中心刷新servelist的时间 默认30秒，单位ms
+  ServerListRefreshInterval: 15000
 
 shaylee-api:
   ribbon:
