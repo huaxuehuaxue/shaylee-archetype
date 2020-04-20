@@ -69,7 +69,7 @@ public class RouteDefinitionWriter implements RouteDefinitionRepository {
 		}*/
 
 		List<SysRouteConfEntity> routeConfEntityList = sysRouteConfService.queryAll().stream()
-				.sorted(Comparator.comparing(SysRouteConfEntity::getSort))
+				.sorted(Comparator.comparing(SysRouteConfEntity::getOrder))
 				.collect(Collectors.toList());
 		List<RouteDefinition> values = RouteDefinitionFactory.buildRouteDefinition(routeConfEntityList);
 		logger.debug("数据库 中路由定义条数: {}, {}", values.size(), values);
