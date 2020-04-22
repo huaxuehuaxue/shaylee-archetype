@@ -47,7 +47,7 @@ shaylee-archetype，一套基于SpirngCloud的简洁轻量后端开发模板
 | shaylee-gateway     | 6190   | 网关服务       |
 | shaylee-monitor     | 6110   | 监控服务       |
 | shaylee-nacos       | 29959  | 注册中心       |
-| shaylee-sentinel    | 26131  | 流量监控       |
+| shaylee-sentinel    | 29820  | 流量监控       |
 
 ### 配置本地hosts
 ```
