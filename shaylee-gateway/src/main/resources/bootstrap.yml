@@ -30,7 +30,7 @@ spring:
         file-extension: yml
     # 限流熔断
     sentinel:
-      # 容器启动时初始化，默认false(懒加载)
+      # 容器初始化时加载
       eager: true
       filter:
         url-patterns: /**
@@ -40,7 +40,7 @@ spring:
         fallback:
           mode: response
       log:
-        dir: shaylee-sentinel-log
+        dir: ${spring.application.name}-sentinel-log
         switch-pid: true
 #          response-status: 426
 #          response-body: error request

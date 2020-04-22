@@ -34,8 +34,15 @@ spring:
         file-extension: yml
     # 限流熔断
     sentinel:
+      # 容器初始化时加载
+      eager: true
+      filter:
+        url-patterns: /**
       transport:
         dashboard: ${SENTINEL-HOST:shaylee-sentinel}:${SENTINEL-PORT:26131}
+      log:
+        dir: ${spring.application.name}-sentinel-log
+        switch-pid: true
   boot:
     admin:
       client:
